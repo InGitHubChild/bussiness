@@ -1,0 +1,1 @@
+<view style="height:100%;"><view class="body-bg"><view class="cu-bar bg-orange-cu search"><view class="wq-back"><text class="cuIcon-back"></text></view></view></view><view class="aaa"><video style="width:100%;" id="myVideo" src="{{videoUrl}}" controls="{{true}}" autoplay="true"></video></view></view>

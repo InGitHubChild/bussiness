@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.UserCommentblogDAO">
+
+    <resultMap id="userCommentblogMap" type="com.bigant.dxscy.model.UserCommentblog">
+        <id property="id" column="id"/>
+        <result property="blogId" column="blog_id"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="userCommentblogMap">
+        SELECT id,blog_id,user_id FROM user_commentblog
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="userCommentblogMap">
+        SELECT id,blog_id,user_id FROM user_commentblog
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO user_commentblog(id,blog_id,user_id)
+        VALUES (#{id},#{blogId},#{userId})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE user_commentblog SET blog_id=#{blogId},user_id=#{userId}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM user_commentblog
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.TUserinfoDAO">
+
+    <resultMap id="tUserinfoMap" type="com.bigant.dxscy.model.TUserinfo">
+        <id property="userInfoid" column="user_infoId"/>
+        <result property="userId" column="user_id"/>
+        <result property="sturName" column="stur_name"/>
+        <result property="stuId" column="stu_id"/>
+        <result property="stuSch" column="stu_sch"/>
+        <result property="stuColl" column="stu_coll"/>
+        <result property="stuMajor" column="stu_major"/>
+        <result property="stuGrade" column="stu_grade"/>
+        <result property="stuNum" column="stu_num"/>
+        <result property="stuSrc" column="stu_src"/>
+        <result property="stuEmail" column="stu_email"/>
+        <result property="stuLevel" column="stu_level"/>
+        <result property="stuStatus" column="stu_status"/>
+        <result property="stuRole" column="stu_role"/>
+        <result property="stuDesc" column="stu_desc"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="tUserinfoMap">
+        SELECT user_infoId,user_id,stur_name,stu_id,stu_sch,stu_coll,stu_major,stu_grade,stu_num,stu_src,stu_email,stu_level,stu_status,stu_role,stu_desc FROM t_userinfo
+        WHERE user_infoId=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="tUserinfoMap">
+        SELECT user_infoId,user_id,stur_name,stu_id,stu_sch,stu_coll,stu_major,stu_grade,stu_num,stu_src,stu_email,stu_level,stu_status,stu_role,stu_desc FROM t_userinfo
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO t_userinfo(user_infoId,user_id,stur_name,stu_id,stu_sch,stu_coll,stu_major,stu_grade,stu_num,stu_src,stu_email,stu_level,stu_status,stu_role,stu_desc)
+        VALUES (#{userInfoid},#{userId},#{sturName},#{stuId},#{stuSch},#{stuColl},#{stuMajor},#{stuGrade},#{stuNum},#{stuSrc},#{stuEmail},#{stuLevel},#{stuStatus},#{stuRole},#{stuDesc})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE t_userinfo SET user_id=#{userId},stur_name=#{sturName},stu_id=#{stuId},stu_sch=#{stuSch},stu_coll=#{stuColl},stu_major=#{stuMajor},stu_grade=#{stuGrade},stu_num=#{stuNum},stu_src=#{stuSrc},stu_email=#{stuEmail},stu_level=#{stuLevel},stu_status=#{stuStatus},stu_role=#{stuRole},stu_desc=#{stuDesc}
+        WHERE user_infoId=#{userInfoid}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM t_userinfo
+        WHERE user_infoId=#{id}
+    </delete>
+
+</mapper>

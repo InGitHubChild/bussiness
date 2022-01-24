@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.TVideoDAO">
+
+    <resultMap id="tVideoMap" type="com.bigant.dxscy.model.TVideo">
+        <id property="videoId" column="video_id"/>
+        <result property="videoName" column="video_name"/>
+        <result property="videoSrc" column="video_src"/>
+        <result property="viewTimes" column="view_times"/>
+        <result property="videoCollects" column="video_collects"/>
+        <result property="videoPic" column="video_pic"/>
+        <result property="collectvideoTime" column="collectVideo_time"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="tVideoMap">
+        SELECT video_id,video_name,video_src,view_times,video_collects,video_pic,collectVideo_time FROM t_video
+        WHERE video_id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="tVideoMap">
+        SELECT video_id,video_name,video_src,view_times,video_collects,video_pic,collectVideo_time FROM t_video
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO t_video(video_id,video_name,video_src,view_times,video_collects,video_pic,collectVideo_time)
+        VALUES (#{videoId},#{videoName},#{videoSrc},#{viewTimes},#{videoCollects},#{videoPic},#{collectvideoTime})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE t_video SET video_name=#{videoName},video_src=#{videoSrc},view_times=#{viewTimes},video_collects=#{videoCollects},video_pic=#{videoPic},collectVideo_time=#{collectvideoTime}
+        WHERE video_id=#{videoId}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM t_video
+        WHERE video_id=#{id}
+    </delete>
+
+</mapper>

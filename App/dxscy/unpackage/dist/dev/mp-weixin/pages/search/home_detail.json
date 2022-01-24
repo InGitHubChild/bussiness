@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "uni-drawer": "/components/uni-drawer/uni-drawer",
+    "media-list": "/components/tab-nvue/mediaList"
+  }
+}

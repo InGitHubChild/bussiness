@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.UserCollectvideoDAO">
+
+    <resultMap id="userCollectvideoMap" type="com.bigant.dxscy.model.UserCollectvideo">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="videoId" column="video_id"/>
+        <result property="collectvideoTime" column="collectVideo_time"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="userCollectvideoMap">
+        SELECT id,user_id,video_id,collectVideo_time FROM user_collectvideo
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="userCollectvideoMap">
+        SELECT id,user_id,video_id,collectVideo_time FROM user_collectvideo
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO user_collectvideo(id,user_id,video_id,collectVideo_time)
+        VALUES (#{id},#{userId},#{videoId},#{collectvideoTime})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE user_collectvideo SET user_id=#{userId},video_id=#{videoId},collectVideo_time=#{collectvideoTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM user_collectvideo
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

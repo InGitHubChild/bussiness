@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.TArticleDAO">
+
+    <resultMap id="tArticleMap" type="com.bigant.dxscy.model.TArticle">
+        <id property="articleId" column="article_id"/>
+        <result property="articleTitle" column="article_title"/>
+        <result property="articleText" column="article_text"/>
+        <result property="articlePic" column="article_pic"/>
+        <result property="aviewTimes" column="aView_times"/>
+        <result property="articleCollects" column="article_collects"/>
+        <result property="collectarticleTime" column="collectArticle_time"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="tArticleMap">
+        SELECT article_id,article_title,article_text,article_pic,aView_times,article_collects,collectArticle_time FROM t_article
+        WHERE article_id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="tArticleMap">
+        SELECT article_id,article_title,article_text,article_pic,aView_times,article_collects,collectArticle_time FROM t_article
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO t_article(article_id,article_title,article_text,article_pic,aView_times,article_collects,collectArticle_time)
+        VALUES (#{articleId},#{articleTitle},#{articleText},#{articlePic},#{aviewTimes},#{articleCollects},#{collectarticleTime})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE t_article SET article_title=#{articleTitle},article_text=#{articleText},article_pic=#{articlePic},aView_times=#{aviewTimes},article_collects=#{articleCollects},collectArticle_time=#{collectarticleTime}
+        WHERE article_id=#{articleId}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM t_article
+        WHERE article_id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,1 @@
+<view><cu-custom vue-id="d413b70a-1" bgColor="white" isBack="{{true}}" bind:__l="__l" vue-slots="{{['backText','content']}}"><view slot="backText">返回</view><view slot="content">查看图片</view></cu-custom><image src="{{imgUrl}}"></image><block wx:if="{{imgName!=''}}"><view class="padding flex flex-wrap justify-end padding-lr-xl"><text>{{"文件名："+imgName}}</text></view></block></view>

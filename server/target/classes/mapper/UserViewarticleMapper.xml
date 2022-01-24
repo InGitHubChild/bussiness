@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.UserViewarticleDAO">
+
+    <resultMap id="userViewarticleMap" type="com.bigant.dxscy.model.UserViewarticle">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="articleId" column="article_id"/>
+        <result property="viewarticleTime" column="viewArticle_time"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="userViewarticleMap">
+        SELECT id,user_id,article_id,viewArticle_time FROM user_viewarticle
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="userViewarticleMap">
+        SELECT id,user_id,article_id,viewArticle_time FROM user_viewarticle
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO user_viewarticle(id,user_id,article_id,viewArticle_time)
+        VALUES (#{id},#{userId},#{articleId},#{viewarticleTime})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE user_viewarticle SET user_id=#{userId},article_id=#{articleId},viewArticle_time=#{viewarticleTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM user_viewarticle
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

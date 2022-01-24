@@ -1,0 +1,1 @@
+<view><cu-custom vue-id="2ba6ef2a-1" bgColor="bg-orange-cu" bind:__l="__l" vue-slots="{{['backText']}}"><view slot="backText">返回</view></cu-custom><web-view src="{{url}}"></web-view></view>

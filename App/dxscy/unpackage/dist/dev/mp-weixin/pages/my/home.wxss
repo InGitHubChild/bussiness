@@ -1,0 +1,34 @@
+
+.mypage-head {
+	margin-bottom: 50px;
+}
+.f-login-location{
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.body-bg{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	background-color: #f1f1f1;
+	position: absolute;
+	bottom: 0;
+	top: 25px;
+	left: 0;
+	right: 0;
+}
+.cu-avatar{
+	background-color: #6e995d;
+}
+.cu-list.menu>.cu-item{
+	background-color: unset;
+}
+

@@ -1,0 +1,33 @@
+
+.voice-box{
+	height: 420rpx;
+}
+.voice-icon{
+	font-size: 56rpx;
+}
+.modal-font{
+	font-size: 32rpx;
+}
+.voice-color{
+	color: green;
+}
+.cu-modal{
+	text-align: left;
+}
+.loading {
+	position: absolute;
+	left: calc(50% - 40rpx);
+	width: 80rpx;
+	height: 80rpx;
+	border: 6rpx solid green;
+	border-radius: 50%;
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 40%);
+	clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 40%);
+	-webkit-animation: rotate-data-v-350f4502 1s linear infinite;
+	animation: rotate-data-v-350f4502 1s linear infinite;
+	-webkit-animation: cuIcon-spin 2s infinite linear;
+	animation: cuIcon-spin 2s infinite linear;
+}
+

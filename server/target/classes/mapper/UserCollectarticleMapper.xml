@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.UserCollectarticleDAO">
+
+    <resultMap id="userCollectarticleMap" type="com.bigant.dxscy.model.UserCollectarticle">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="articleId" column="article_id"/>
+        <result property="collectarticleTime" column="collectArticle_time"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="userCollectarticleMap">
+        SELECT id,user_id,article_id,collectArticle_time FROM user_collectarticle
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="userCollectarticleMap">
+        SELECT id,user_id,article_id,collectArticle_time FROM user_collectarticle
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO user_collectarticle(id,user_id,article_id,collectArticle_time)
+        VALUES (#{id},#{userId},#{articleId},#{collectarticleTime})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE user_collectarticle SET user_id=#{userId},article_id=#{articleId},collectArticle_time=#{collectarticleTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM user_collectarticle
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.TMainorderDAO">
+
+    <resultMap id="tMainorderMap" type="com.bigant.dxscy.model.TMainorder">
+        <id property="orderId" column="order_id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="orderPrice" column="order_price"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="orderTitle" column="order_title"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="tMainorderMap">
+        SELECT order_id,goods_id,user_id,order_price,order_time,order_title FROM t_mainorder
+        WHERE order_id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="tMainorderMap">
+        SELECT order_id,goods_id,user_id,order_price,order_time,order_title FROM t_mainorder
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO t_mainorder(order_id,goods_id,user_id,order_price,order_time,order_title)
+        VALUES (#{orderId},#{goodsId},#{userId},#{orderPrice},#{orderTime},#{orderTitle})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE t_mainorder SET goods_id=#{goodsId},user_id=#{userId},order_price=#{orderPrice},order_time=#{orderTime},order_title=#{orderTitle}
+        WHERE order_id=#{orderId}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM t_mainorder
+        WHERE order_id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,19 @@
+
+.fy-textarea {
+	width: unset;
+	min-height: 500rpx;
+	height: 150px;
+	display: block;
+	position: relative;
+	font-size: 16px;
+	line-height: normal;
+}
+.textarea-box{
+	padding:32rpx;
+}
+.bottom{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+

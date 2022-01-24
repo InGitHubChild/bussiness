@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.UserTeamDAO">
+
+    <resultMap id="userTeamMap" type="com.bigant.dxscy.model.UserTeam">
+        <id property="id" column="id"/>
+        <result property="teamId" column="team_id"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="userTeamMap">
+        SELECT id,team_id,user_id FROM user_team
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="userTeamMap">
+        SELECT id,team_id,user_id FROM user_team
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO user_team(id,team_id,user_id)
+        VALUES (#{id},#{teamId},#{userId})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE user_team SET team_id=#{teamId},user_id=#{userId}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM user_team
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

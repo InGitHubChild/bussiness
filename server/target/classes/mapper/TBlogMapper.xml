@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.TBlogDAO">
+
+    <resultMap id="tBlogMap" type="com.bigant.dxscy.model.TBlog">
+        <id property="blogId" column="blog_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="blogOwner" column="blog_owner"/>
+        <result property="blogTitle" column="blog_title"/>
+        <result property="viewTitmes" column="view_titmes"/>
+        <result property="blogLikes" column="blog_likes"/>
+        <result property="blogText" column="blog_text"/>
+        <result property="blogTag" column="blog_tag"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="tBlogMap">
+        SELECT blog_id,user_id,blog_owner,blog_title,view_titmes,blog_likes,blog_text,blog_tag FROM t_blog
+        WHERE blog_id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="tBlogMap">
+        SELECT blog_id,user_id,blog_owner,blog_title,view_titmes,blog_likes,blog_text,blog_tag FROM t_blog
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO t_blog(blog_id,user_id,blog_owner,blog_title,view_titmes,blog_likes,blog_text,blog_tag)
+        VALUES (#{blogId},#{userId},#{blogOwner},#{blogTitle},#{viewTitmes},#{blogLikes},#{blogText},#{blogTag})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE t_blog SET user_id=#{userId},blog_owner=#{blogOwner},blog_title=#{blogTitle},view_titmes=#{viewTitmes},blog_likes=#{blogLikes},blog_text=#{blogText},blog_tag=#{blogTag}
+        WHERE blog_id=#{blogId}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM t_blog
+        WHERE blog_id=#{id}
+    </delete>
+
+</mapper>

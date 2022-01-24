@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigant.dxscy.dao.TGoodsDAO">
+
+    <resultMap id="tGoodsMap" type="com.bigant.dxscy.model.TGoods">
+        <id property="goodsId" column="goods_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="goodsPic" column="goods_pic"/>
+        <result property="goodsPrice" column="goods_price"/>
+        <result property="goodsDesc" column="goods_desc"/>
+        <result property="goodsItem" column="goods_item"/>
+        <result property="goodsTitle" column="goods_title"/>
+    </resultMap>
+
+    <!--通过ID查询单个-->
+    <select id="findById" resultMap="tGoodsMap">
+        SELECT goods_id,user_id,goods_pic,goods_price,goods_desc,goods_item,goods_title FROM t_goods
+        WHERE goods_id=#{id}
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" resultMap="tGoodsMap">
+        SELECT goods_id,user_id,goods_pic,goods_price,goods_desc,goods_item,goods_title FROM t_goods
+    </select>
+
+    <!--新增-->
+    <insert id="insert">
+        INSERT INTO t_goods(goods_id,user_id,goods_pic,goods_price,goods_desc,goods_item,goods_title)
+        VALUES (#{goodsId},#{userId},#{goodsPic},#{goodsPrice},#{goodsDesc},#{goodsItem},#{goodsTitle})
+    </insert>
+
+    <!--修改-->
+    <update id="update">
+        UPDATE t_goods SET user_id=#{userId},goods_pic=#{goodsPic},goods_price=#{goodsPrice},goods_desc=#{goodsDesc},goods_item=#{goodsItem},goods_title=#{goodsTitle}
+        WHERE goods_id=#{goodsId}
+    </update>
+
+    <!--通过ID删除单个-->
+    <delete id="deleteById">
+        DELETE FROM t_goods
+        WHERE goods_id=#{id}
+    </delete>
+
+</mapper>
